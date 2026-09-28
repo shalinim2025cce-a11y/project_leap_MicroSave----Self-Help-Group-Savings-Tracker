@@ -23,6 +23,7 @@ public class Repayment {
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;
 
+    @NotNull(message = "Repayment date is required")
     @Column(nullable = false)
     private LocalDate repaymentDate;
 
