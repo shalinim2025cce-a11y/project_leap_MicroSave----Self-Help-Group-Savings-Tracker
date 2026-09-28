@@ -26,6 +26,7 @@ public class Loan {
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal outstandingAmount;
 
+    @NotNull(message = "Loan date is required")
     @Column(nullable = false)
     private LocalDate loanDate;
 
