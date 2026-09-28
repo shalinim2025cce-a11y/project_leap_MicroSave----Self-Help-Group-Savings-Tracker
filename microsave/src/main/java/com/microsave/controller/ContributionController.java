@@ -3,6 +3,7 @@ package com.microsave.controller;
 import com.microsave.entity.Contribution;
 import com.microsave.service.ContributionService;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -17,7 +18,8 @@ public class ContributionController {
     }
 
     @PostMapping
-    public Contribution createContribution(@RequestBody Contribution contribution) {
+    public Contribution createContribution(
+            @Valid @RequestBody Contribution contribution) {
         return contributionService.createContribution(contribution);
     }
 

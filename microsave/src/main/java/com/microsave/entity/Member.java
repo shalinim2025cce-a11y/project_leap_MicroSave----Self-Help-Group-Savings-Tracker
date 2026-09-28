@@ -1,6 +1,7 @@
 package com.microsave.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "members")
@@ -10,9 +11,11 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Member name is required")
     @Column(nullable = false)
     private String name;
 
+    @NotBlank(message = "Phone number is required")
     @Column(nullable = false, unique = true)
     private String phone;
 

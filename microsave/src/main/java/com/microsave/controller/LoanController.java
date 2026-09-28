@@ -2,6 +2,7 @@ package com.microsave.controller;
 
 import com.microsave.entity.Loan;
 import com.microsave.service.LoanService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class LoanController {
     }
 
     @PostMapping
-    public Loan createLoan(@RequestBody Loan loan) {
+    public Loan createLoan(@Valid @RequestBody Loan loan){
         return loanService.createLoan(loan);
     }
 

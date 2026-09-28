@@ -1,6 +1,9 @@
 package com.microsave.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -12,6 +15,11 @@ public class Repayment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @DecimalMin(
+            value = "0.01",
+            message = "Repayment amount must be greater than 0"
+    )
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;
 
@@ -25,7 +33,11 @@ public class Repayment {
     public Repayment() {
     }
 
-    public Repayment(BigDecimal amount, LocalDate repaymentDate, Loan loan) {
+    public Repayment(
+            BigDecimal amount,
+            LocalDate repaymentDate,
+            Loan loan) {
+
         this.amount = amount;
         this.repaymentDate = repaymentDate;
         this.loan = loan;

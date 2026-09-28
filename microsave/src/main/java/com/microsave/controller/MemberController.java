@@ -2,6 +2,7 @@ package com.microsave.controller;
 
 import com.microsave.entity.Member;
 import com.microsave.service.MemberService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class MemberController {
     }
 
     @PostMapping
-    public Member createMember(@RequestBody Member member) {
+    public Member createMember(@Valid @RequestBody Member member){
         return memberService.createMember(member);
     }
 

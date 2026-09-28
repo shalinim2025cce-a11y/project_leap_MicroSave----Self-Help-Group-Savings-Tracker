@@ -2,6 +2,7 @@ package com.microsave.controller;
 
 import com.microsave.entity.Group;
 import com.microsave.service.GroupService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class GroupController {
     }
 
     @PostMapping
-    public Group createGroup(@RequestBody Group group) {
+    public Group createGroup(@Valid @RequestBody Group group) {
         return groupService.createGroup(group);
     }
 

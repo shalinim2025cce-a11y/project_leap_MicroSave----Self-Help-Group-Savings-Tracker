@@ -2,6 +2,7 @@ package com.microsave.controller;
 
 import com.microsave.entity.Repayment;
 import com.microsave.service.RepaymentService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,8 @@ public class RepaymentController {
     }
 
     @PostMapping
-    public Repayment createRepayment(@RequestBody Repayment repayment) {
+    public Repayment createRepayment(
+            @Valid @RequestBody Repayment repayment) {
         return repaymentService.createRepayment(repayment);
     }
 

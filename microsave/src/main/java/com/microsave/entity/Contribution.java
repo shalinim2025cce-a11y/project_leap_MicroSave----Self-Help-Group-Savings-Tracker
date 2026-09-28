@@ -1,6 +1,9 @@
 package com.microsave.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -12,9 +15,15 @@ public class Contribution {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @DecimalMin(
+            value = "0.01",
+            message = "Contribution amount must be greater than 0"
+    )
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;
 
+    @NotNull(message = "Contribution date is required")
     @Column(nullable = false)
     private LocalDate contributionDate;
 
@@ -25,7 +34,11 @@ public class Contribution {
     public Contribution() {
     }
 
-    public Contribution(BigDecimal amount, LocalDate contributionDate, Member member) {
+    public Contribution(
+            BigDecimal amount,
+            LocalDate contributionDate,
+            Member member) {
+
         this.amount = amount;
         this.contributionDate = contributionDate;
         this.member = member;
